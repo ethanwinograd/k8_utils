@@ -1,2 +1,2 @@
 # k8_utils
-helpers for working withy kubernetes
+helpers for working with kubernetes
