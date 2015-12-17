@@ -6,3 +6,9 @@ helpers for working with kubernetes
 This guy allows you to see the logs for a pod by giving the service name.  Useful when your podnames keep changing.
 usage : 
 ``$./k8-log-by-svc.sh my_service``
+
+
+## k8-bash-by-svc.sh
+This guy opens a bash shell for a pod by giving the service name.  Useful when your podnames keep changing.
+usage : 
+``$./k8-bash-by-svc.sh my_service``
