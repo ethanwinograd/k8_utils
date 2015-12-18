@@ -12,5 +12,5 @@ for pod in $(kubectl get pod|grep $1| awk '{print $1;}' )
 do  
 	cmd="kubectl logs -f ${pod}"
 	echo $cmd
-	x-terminal-emulator --new-tab -x ${cmd} &
+	x-terminal-emulator --new-tab --title=${pod} --geometry=900x450 -x ${cmd} &
 done
