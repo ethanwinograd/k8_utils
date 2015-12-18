@@ -8,4 +8,10 @@
 # ./k8-bash-by-svc.sh  YOUR_SVC_NAME
 
 
-kubectl exec -it $(kubectl get pod|grep $1 | awk '{print $1;}') bash
+
+for pod in $(kubectl get pod|grep $1| awk '{print $1;}' )
+do  
+	cmd="kubectl exec -it ${pod} bash"
+	echo $cmd
+	x-terminal-emulator --new-tab -x ${cmd} &
+done
