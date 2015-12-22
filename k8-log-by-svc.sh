@@ -8,9 +8,15 @@
 # ./k8-log-by-svc.sh  YOUR_SVC_NAME
 
 
-for pod in $(kubectl get pod|grep $1| awk '{print $1;}' )
-do  
-	cmd="kubectl logs -f ${pod}"
-	echo $cmd
-	x-terminal-emulator --new-tab --title=${pod} --geometry=900x450 -x ${cmd} &
-done
+number_of_pods=$(kubectl get pod|grep $1|wc -l)
+if [ ${number_of_pods} -gt 1 ]; then
+	vertical=300
+	for pod in $(kubectl get pod|grep $1| awk '{print $1;}' )
+	do  
+		let "vertical+=50"
+		cmd="kubectl logs -f ${pod}"
+		x-terminal-emulator --new-tab --title=${pod} --geometry=900x450+100+${vertical} -x ${cmd} &
+	done
+else
+	kubectl logs -f $(kubectl get pod|grep $1| awk '{print $1;}')
+fi
