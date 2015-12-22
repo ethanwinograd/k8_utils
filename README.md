@@ -10,6 +10,8 @@ usage :
 ``$./k8r2me.sh logs my_service``
 
 
+These guys below are the original scripts -- there really is no need for them now that k8r2me exiusts.
+
 
 ## k8-log-by-svc.sh
 This guy allows you to see the logs for a pod by giving the service name.  Useful when your podnames keep changing. It opens a new default terminal window in the case of multiple matches.
