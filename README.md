@@ -9,3 +9,11 @@ usage :
 ``$./k8r2me.sh bash my_service``
 ``$./k8r2me.sh logs my_service``
 
+## requirements
+kubectl
+https://cloud.google.com/container-engine/docs/kubectl/
+
+## install
+ ``$sudo chmod 0755 ~/k8_utils/k8r2me.sh``
+ ``$sudo ln -s ~/k8_utils/k8r2me.sh /usr/bin/k8r2me.sh``
+
