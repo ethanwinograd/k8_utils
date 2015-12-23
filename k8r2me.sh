@@ -36,13 +36,15 @@ number_of_pods=$(kubectl get pod|grep $svc_name|wc -l)
 if [ ${number_of_pods} -gt 1 ]; then
 	#spawn new terminals
 	vertical=300
+	horizontal=100
 	for pod in $(kubectl get pod|grep $svc_name| awk '{print $1;}' )
 	do  
-		let "vertical+=50"
+		let "vertical+=150"
+		let "horizontal+=150"
 		if [ "${task}" =  "bash" ]; then
-			x-terminal-emulator --new-tab --title=${pod} --geometry=900x450+100+${vertical} -x kubectl exec -it ${pod} bash &
+			x-terminal-emulator --new-tab --title=${pod} --geometry=900x450+${horizontal}+${vertical} -x kubectl exec -it ${pod} bash &
 		else
-			x-terminal-emulator --new-tab --title=${pod} --geometry=900x450+100+${vertical} -x kubectl logs -f ${pod} &
+			x-terminal-emulator --new-tab --title=${pod} --geometry=900x450+${horizontal}+${vertical} -x kubectl logs -f ${pod} &
 		fi		
 	done
 else
